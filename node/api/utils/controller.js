@@ -30,6 +30,14 @@ class Controller {
     .then(Helper.respondWithResult(res))
     .catch(Helper.handleError(res));
   };
+    getForPerson(req,res) {
+      co(function* () {
+          let objects = yield this.Model.find({owner: req.params.id}).exec();
+          return objects;
+      }.bind(this))
+          .then(Helper.respondWithResult(res))
+          .catch(Helper.handleError(res));
+  };
   get(req,res) {
     co(function* () {
       let objects = yield this.Model.find().exec();

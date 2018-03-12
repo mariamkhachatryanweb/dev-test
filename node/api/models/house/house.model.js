@@ -5,7 +5,12 @@ mongoose.Promise = Promise;
 
 var HouseSchema = new mongoose.Schema({
   type: String,
-  colour: String
+  colour: String,
+  owner: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Person',
+    required: true
+  }
 }, {
   usePushEach: true
 });

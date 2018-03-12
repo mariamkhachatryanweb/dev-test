@@ -2,13 +2,12 @@
 
 let express = require('express');
 
-module.exports = function (House,Auth) {
-	let HouseController = require('./house.controller')(House);
+module.exports = function (Person,Auth) {
+	let HouseController = require('./person.controller')(Person);
 	let controller = new HouseController();
 	let router = express.Router();
 
 	router.get('/', (req,res)=>controller.get(req,res));
-	router.get('/owner/:id', (req,res)=>controller.getForPerson(req,res));
 	router.get('/:id', (req,res)=>controller.show(req,res));
 	router.post('/', (req,res)=>controller.create(req,res));
 	router.put('/:id', (req,res)=>controller.update(req,res));

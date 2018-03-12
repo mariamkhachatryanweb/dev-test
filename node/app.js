@@ -23,6 +23,7 @@ let mongoose = require('mongoose');
 
 // leting data models
 let House = require('./api/models/house/house.model');
+let Person = require('./api/models/person/person.model');
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/repairly-test', {
@@ -50,6 +51,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api/houses', require('./api/models/house')(House));
+app.use('/api/persons', require('./api/models/person')(Person));
 
 // Start server
 function startServer() {
